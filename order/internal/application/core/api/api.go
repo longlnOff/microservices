@@ -2,10 +2,12 @@ package api
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/longlnOff/microservices/order/internal/application/core/domain"
 	"github.com/longlnOff/microservices/order/internal/ports"
+	"google.golang.org/genproto/googleapis/rpc/errdetails"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type Application struct {
@@ -24,13 +26,18 @@ func (a Application) PlaceOrder(ctx context.Context, order domain.Order) (domain
 	if err != nil {
 		return domain.Order{}, err
 	}
-	fmt.Println("LINE 27 ====================")
-	fmt.Printf("order: %v\n", order)
 	paymentErr := a.payment.Charge(ctx, &order)
-	fmt.Printf("123order: %v\n", order)
 	if paymentErr != nil {
-		println(paymentErr.Error())
-		return domain.Order{}, paymentErr
+		st, _ := status.FromError(paymentErr)
+		fieldErr := errdetails.BadRequest_FieldViolation{
+			Field:       "payment",
+			Description: st.Message(),
+		}
+		badReq := &errdetails.BadRequest{}
+		badReq.FieldViolations = append(badReq.FieldViolations, &fieldErr)
+		orderStatus := status.New(codes.InvalidArgument, "order creation failed")
+		statusWithDetails, _:= orderStatus.WithDetails(badReq)
+		return domain.Order{}, statusWithDetails.Err()
 	}
 
 	return order, nil
