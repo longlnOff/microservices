@@ -1,8 +1,12 @@
 package ports
 
-import "github.com/longlnOff/microservices/order/internal/application/core/domain"
+import (
+	"context"
+
+	"github.com/longlnOff/microservices/order/internal/application/core/domain"
+)
 
 type DBPort interface {
-	Get(id string) (domain.Order, error)
-	Save(*domain.Order) error
+	Get(context.Context, int64) (domain.Order, error)
+	Save(context.Context, *domain.Order) error
 }
