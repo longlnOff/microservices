@@ -32,7 +32,7 @@ func (a Adapter) Run() {
 	}
 
 	grpcServer := grpc.NewServer(
-		grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
+		grpc.StatsHandler(otelgrpc.NewServerHandler()),
 	)
 	a.server = grpcServer
 	order.RegisterOrderServer(grpcServer, a)
