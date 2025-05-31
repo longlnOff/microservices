@@ -3,7 +3,7 @@ module github.com/longlnOff/microservices/order
 go 1.24.2
 
 require (
-	github.com/longlnOff/microservices-proto/golang/order v1.2.9
+	github.com/longlnOff/microservices-proto/golang/order v1.2.5
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/gorm v1.25.12
 )
@@ -29,7 +29,7 @@ require (
 	golang.org/x/net v0.35.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.24.0 // indirect
-	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
+	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013
 	google.golang.org/grpc v1.71.1
 	google.golang.org/protobuf v1.36.6 // indirect
 )

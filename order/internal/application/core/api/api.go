@@ -29,6 +29,15 @@ func (a Application) PlaceOrder(ctx context.Context, order domain.Order) (domain
 	paymentErr := a.payment.Charge(ctx, &order)
 	if paymentErr != nil {
 		st, _ := status.FromError(paymentErr)
+		var allErrors []string
+		for _, detail := range st.Details() {
+			switch t := detail.(type) {
+			case *errdetails.BadRequest:
+				for _, violation := range t.GetFieldViolations() {
+					allErrors = append(allErrors, violation.Description)
+				}
+			}
+		}
 		fieldErr := errdetails.BadRequest_FieldViolation{
 			Field:       "payment",
 			Description: st.Message(),
@@ -39,6 +48,5 @@ func (a Application) PlaceOrder(ctx context.Context, order domain.Order) (domain
 		statusWithDetails, _:= orderStatus.WithDetails(badReq)
 		return domain.Order{}, statusWithDetails.Err()
 	}
-
 	return order, nil
 }

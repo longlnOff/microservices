@@ -15,7 +15,8 @@ func (a Adapter) Create(ctx context.Context, request *payment.CreatePaymentReque
 	newPayment := domain.NewPayment(request.UserId, request.OrderId, request.TotalPrice)
 	result, err := a.api.Charge(ctx, newPayment)
 	if err != nil {
-		return nil, status.New(codes.Internal, fmt.Sprintf("failed to charge. %v ", err)).Err()
+		return nil, status.New(codes.Internal, 
+							   fmt.Sprintf("failed to charge. %v ", err)).Err()
 	}
 	return &payment.CreatePaymentResponse{PaymentId: result.ID}, nil
 }

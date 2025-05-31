@@ -41,8 +41,8 @@ github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
 github.com/jinzhu/now v1.1.5/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
-github.com/longlnOff/microservices-proto/golang/order v1.2.9 h1:YAYwlrcaud7Ee1nV55TehuGGxIA0nhG8sSWJGL2ZOnU=
-github.com/longlnOff/microservices-proto/golang/order v1.2.9/go.mod h1:lM05GUjdndFAn0XEfTluLtH/wJvYKv4ObZcpVa6/6kg=
+github.com/longlnOff/microservices-proto/golang/order v1.2.5 h1:7Jy1yQikwCqOV3TK/VQH4Wpz8i52RWsg3UpMIYOsGIo=
+github.com/longlnOff/microservices-proto/golang/order v1.2.5/go.mod h1:lM05GUjdndFAn0XEfTluLtH/wJvYKv4ObZcpVa6/6kg=
 github.com/longlnOff/microservices-proto/golang/payment v1.2.5 h1:49GQaKm205o7UV4Ia0x0rF7J6k4AOBTsobdwt0QddCw=
 github.com/longlnOff/microservices-proto/golang/payment v1.2.5/go.mod h1:vDWc2PlAVJAFQukV+9AXhBaNcPBOgiI1Hl6VL3GZ4eo=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
